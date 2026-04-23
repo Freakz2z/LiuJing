@@ -1,0 +1,236 @@
+/* 自定义 Modal 样式 - 全屏覆盖 Content 区域 */
+.custom-modal-overlay {
+  position: fixed;
+  top: 64px;
+  left: 240px;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  animation: customModalFadeIn 0.2s ease;
+  transition: left 0.3s ease;
+}
+
+/* 适配 Sidebar 折叠状态 - 使用 :has() 伪类 */
+.ant-layout:has(.ant-layout-sider-collapsed) ~ .ant-layout .custom-modal-overlay {
+  left: 80px !important;
+}
+
+/* 兼容直接子级关系 */
+.ant-layout-sider-collapsed ~ .ant-layout .custom-modal-overlay {
+  left: 80px !important;
+}
+
+@keyframes customModalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.custom-modal-container {
+  background: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: customModalSlideUp 0.3s ease;
+}
+
+@keyframes customModalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 头部 */
+.custom-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+.custom-modal-title-wrap {
+  flex: 1;
+  min-width: 0;
+}
+
+.custom-modal-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1B5E20;
+}
+
+.custom-modal-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.custom-modal-close:hover {
+  background: #e0e0e0;
+  color: #333;
+}
+
+/* 内容区域 */
+.custom-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 20px 24px;
+  background: #f5f6f8;
+}
+
+/* 底部 */
+.custom-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid #f0f0f0;
+  flex-shrink: 0;
+  background: #fff;
+}
+
+/* 滚动条样式 */
+.custom-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.custom-modal-body::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.custom-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* 媒体选择器全屏模态框 */
+.media-selector-overlay .custom-modal-container {
+  height: 100%;
+}
+
+.media-selector-overlay .custom-modal-footer {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  padding: 12px 24px;
+}
+/* 媒体选择器全屏模态框 - Tabs修复 */
+.media-selector-overlay .custom-modal-body {
+  overflow: hidden;
+}
+
+.media-selector-overlay .ant-tabs {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.media-selector-overlay .ant-tabs-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.media-selector-overlay .ant-tabs-tabpane {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* 修复滚动问题 */
+.media-selector-overlay .custom-modal-body {
+  overflow: hidden;
+}
+
+.media-selector-overlay .custom-modal-body > div,
+.media-selector-overlay .ant-spin-nested-loading {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.media-selector-overlay .ant-spin-container {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.media-selector-overlay .ant-tabs-content-holder {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.media-selector-overlay .ant-tabs-nav {
+  padding: 0 24px;
+  margin-bottom: 0;
+  background: #fff;
+}
+
+/* 媒体选择器 - 内容区滚动 */
+.media-selector-overlay .custom-modal-body {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.media-selector-overlay .ant-tabs-content-holder {
+  overflow-y: auto !important;
+  flex: 1 !important;
+}
+
+.media-selector-overlay .ant-tabs-content {
+  height: auto !important;
+  overflow-y: visible !important;
+}
+
+.media-selector-overlay .ant-tabs-tabpane-active {
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* 强制媒体库选择器内容滚动 */
+.media-selector-overlay .ant-tabs {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.media-selector-overlay .ant-tabs > .ant-tabs-nav {
+  flex-shrink: 0;
+}
+
+.media-selector-overlay .ant-tabs > .ant-tabs-content-holder {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.media-selector-overlay .ant-tabs > .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane {
+  height: 100%;
+  overflow-y: auto;
+}

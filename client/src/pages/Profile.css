@@ -1,0 +1,336 @@
+.profile-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8f6f3 0%, #fff 100%);
+  padding-bottom: 60px;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 900px) {
+  .profile-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 用户信息卡片 */
+.profile-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6b35 0%, #f7c948 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  color: #fff;
+}
+
+.profile-info h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.profile-info .phone {
+  font-size: 13px;
+  margin-top: 8px;
+  color: var(--text-secondary);
+}
+
+.btn-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 8px 20px;
+  background: #fff;
+  border: 1.5px solid #e0d6cc;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-edit:hover {
+  border-color: #ff6b35;
+  color: #ff6b35;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-save {
+  padding: 8px 20px;
+  background: #ff6b35;
+  border: none;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-cancel {
+  padding: 8px 20px;
+  background: #fff;
+  border: 1.5px solid #e0d6cc;
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.edit-form {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.edit-form .form-group {
+  margin-bottom: 16px;
+}
+
+.edit-form label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e8e2da;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.edit-form input:focus {
+  border-color: #ff6b35;
+}
+
+/* 内容区域 */
+.profile-content {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #f0ebe5;
+  margin-bottom: 24px;
+}
+
+.profile-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  font-size: 14px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: all 0.2s;
+}
+
+.profile-tab:hover {
+  color: var(--text-primary);
+}
+
+.profile-tab.active {
+  color: #ff6b35;
+  border-bottom-color: #ff6b35;
+}
+
+/* 收藏列表 */
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.favorite-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fafafa;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.favorite-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.favorite-cover {
+  position: relative;
+  aspect-ratio: 16/10;
+  overflow: hidden;
+}
+
+.favorite-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.favorite-cover .play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #ff6b35;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.favorite-card:hover .play-btn {
+  opacity: 1;
+}
+
+.favorite-info {
+  padding: 12px;
+}
+
+.favorite-category {
+  font-size: 11px;
+  color: #ff6b35;
+  background: rgba(255, 107, 53, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.favorite-info h4 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 8px 0 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.favorite-author {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* 预约列表 */
+.appointments-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.appointment-card {
+  padding: 16px 20px;
+  background: #fafafa;
+  border-radius: 12px;
+  border-left: 3px solid #ff6b35;
+}
+
+.appointment-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.status-badge {
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+.status-badge.pending {
+  background: #fff3e0;
+  color: #ff9800;
+}
+
+.status-badge.confirmed {
+  background: #e3f2fd;
+  color: #2196f3;
+}
+
+.status-badge.completed {
+  background: #e8f5e9;
+  color: #4caf50;
+}
+
+.status-badge.cancelled {
+  background: #fafafa;
+  color: #999;
+}
+
+.appointment-type {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.appointment-card h4 {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin: 0 0 8px;
+}
+
+.appointment-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* 空状态 */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 14px;
+}

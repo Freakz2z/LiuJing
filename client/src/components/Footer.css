@@ -1,0 +1,237 @@
+
+/* Footer Base */
+.footer {
+  background: #2c2c2c;
+  color: rgba(255, 255, 255, 0.65);
+  padding: 80px 0 0;
+}
+
+.footer-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Main Content */
+.footer-main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  padding-bottom: 60px;
+}
+
+/* Brand Section */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.footer-logo img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.footer-logo-sub {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 2px;
+}
+
+.footer-slogan {
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 28px;
+}
+
+.footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.footer-contact-item svg {
+  color: #8bc34a;
+  flex-shrink: 0;
+}
+
+/* Navigation Section */
+.footer-nav {
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  gap: 60px;
+}
+
+.footer-nav-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0 0 20px 0;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #8bc34a;
+  display: inline-block;
+}
+
+.footer-nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav-links a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-nav-links a:hover {
+  color: #8bc34a;
+  transform: translateX(4px);
+}
+
+.footer-company-intro {
+  font-size: 13px;
+  line-height: 2;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+}
+
+/* Bottom Section */
+.footer-bottom {
+  padding: 30px 0;
+}
+
+.footer-bottom-line {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 30px;
+}
+
+.footer-copyright {
+  text-align: center;
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 1px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+  .footer {
+    padding: 60px 0 0;
+  }
+  
+  .footer-main {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  
+  .footer-nav {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 640px) {
+  .footer {
+    padding: 50px 0 0;
+  }
+  
+  .footer-wrapper {
+    padding: 0 16px;
+  }
+  
+  .footer-main {
+    gap: 40px;
+    padding-bottom: 40px;
+  }
+  
+  .footer-logo {
+    margin-bottom: 20px;
+  }
+  
+  .footer-logo img {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .footer-logo-title {
+    font-size: 20px;
+  }
+  
+  .footer-nav {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  
+  .footer-nav-title {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  
+  .footer-company-intro {
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  
+  .footer-nav-links {
+    gap: 12px;
+  }
+  
+  .footer-nav-links a {
+    font-size: 13px;
+  }
+  
+  .footer-contact-list {
+    gap: 10px;
+  }
+  
+  .footer-contact-item {
+    font-size: 12px;
+  }
+  
+  .footer-bottom {
+    padding: 24px 0;
+  }
+  
+  .footer-copyright p {
+    font-size: 12px;
+  }
+}
