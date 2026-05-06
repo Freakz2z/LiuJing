@@ -140,6 +140,18 @@ export const adminApi = {
   createMediaFolder: (data) => request('/admin/media/folders', { method: 'POST', body: data }),
   updateMediaFolder: (id, data) => request(`/admin/media/folders/${id}`, { method: 'PUT', body: data }),
   deleteMediaFolder: (id) => request(`/admin/media/folders/${id}`, { method: 'DELETE' }),
+
+  // 地区管理
+  getRegions: () => request('/admin/regions'),
+  createRegion: (data) => request('/admin/regions', { method: 'POST', body: data }),
+  updateRegion: (id, data) => request(`/admin/regions/${id}`, { method: 'PUT', body: data }),
+  deleteRegion: (id) => request(`/admin/regions/${id}`, { method: 'DELETE' }),
+
+  // 产业项目管理
+  getIndustryItems: () => request('/admin/industry'),
+  createIndustryItem: (data) => request('/admin/industry', { method: 'POST', body: data }),
+  updateIndustryItem: (id, data) => request(`/admin/industry/${id}`, { method: 'PUT', body: data }),
+  deleteIndustryItem: (id) => request(`/admin/industry/${id}`, { method: 'DELETE' }),
 };
 
 // 获取完整的文件URL

@@ -59,4 +59,16 @@ router.post('/banners', adminController.createBanner);
 router.put('/banners/:id', adminController.updateBanner);
 router.delete('/banners/:id', adminController.deleteBanner);
 
+// 地区管理
+router.get('/regions', adminController.getRegions);
+router.post('/regions', adminController.createRegion);
+router.put('/regions/:id', adminController.updateRegion);
+router.delete('/regions/:id', adminController.deleteRegion);
+
+// 产业项目管理
+router.get('/industry', adminController.getIndustryItems);
+router.post('/industry', adminController.createIndustryItem);
+router.put('/industry/:id', adminController.updateIndustryItem);
+router.delete('/industry/:id', adminController.deleteIndustryItem);
+
 module.exports = router;

@@ -20,6 +20,7 @@ import Profile from './pages/Profile';
 import PolicyDetail from './pages/PolicyDetail';
 import ProductDetail from './pages/ProductDetail';
 import BaseDetail from './pages/BaseDetail';
+import Industry from './pages/Industry';
 import './styles/global.css';
 
 function PrivateRoute({ children }) {
@@ -74,6 +75,7 @@ function AppContent() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/policy/:id" element={<PolicyDetail />} />
+            <Route path="/industry" element={<Industry />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/bases/:id" element={<BaseDetail />} />
           </Routes>

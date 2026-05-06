@@ -32,4 +32,13 @@ router.get('/products', publicController.getProducts);
 // 获取基地列表
 router.get('/bases', publicController.getBases);
 
+// 获取产业地区列表
+router.get('/regions', publicController.getRegions);
+
+// 获取产业项目列表
+router.get('/industry', publicController.getIndustryItems);
+
+// 获取单个地区及产业详情
+router.get('/industry/:regionId', publicController.getIndustryByRegion);
+
 module.exports = router;

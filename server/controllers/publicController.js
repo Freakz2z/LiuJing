@@ -199,3 +199,47 @@ exports.getBases = async (req, res) => {
     res.status(500).json({ message: '服务器错误' });
   }
 };
+
+// 获取产业地区列表
+exports.getRegions = async (req, res) => {
+  try {
+    const [list] = await pool.query(
+      'SELECT id, name, intro, overview FROM regions ORDER BY id'
+    );
+    res.json({ list });
+  } catch (error) {
+    console.error('getRegions error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+// 获取产业项目列表
+exports.getIndustryItems = async (req, res) => {
+  try {
+    const { category, regionId } = req.query;
+    let sql = 'SELECT i.*, r.name as region_name FROM industry_items i LEFT JOIN regions r ON i.region_id = r.id WHERE i.status = ?';
+    const params = ['已发布'];
+    if (category) { sql += ' AND i.category = ?'; params.push(category); }
+    if (regionId) { sql += ' AND i.region_id = ?'; params.push(regionId); }
+    sql += ' ORDER BY i.region_id, i.id';
+    const [list] = await pool.query(sql, params);
+    res.json({ list });
+  } catch (error) {
+    console.error('getIndustryItems error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+// 获取单个地区及产业详情
+exports.getIndustryByRegion = async (req, res) => {
+  try {
+    const { regionId } = req.params;
+    const [regions] = await pool.query('SELECT * FROM regions WHERE id = ?', [regionId]);
+    if (regions.length === 0) return res.status(404).json({ message: '地区不存在' });
+    const [items] = await pool.query('SELECT * FROM industry_items WHERE region_id = ? AND status = ? ORDER BY category, id', [regionId, '已发布']);
+    res.json({ region: regions[0], items });
+  } catch (error) {
+    console.error('getIndustryByRegion error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};

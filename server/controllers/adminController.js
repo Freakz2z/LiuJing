@@ -657,3 +657,109 @@ exports.deletePolicy = async (req, res) => {
     res.status(500).json({ message: '服务器错误' });
   }
 };
+
+// 地区管理
+exports.getRegions = async (req, res) => {
+  try {
+    const [list] = await pool.query('SELECT * FROM regions ORDER BY id');
+    res.json({ list });
+  } catch (error) {
+    console.error('getRegions error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.createRegion = async (req, res) => {
+  try {
+    const { name, geo_id, intro, overview } = req.body;
+    const [result] = await pool.query(
+      'INSERT INTO regions (name, geo_id, intro, overview) VALUES (?, ?, ?, ?)',
+      [name, geo_id, intro, overview]
+    );
+    const [rows] = await pool.query('SELECT * FROM regions WHERE id = ?', [result.insertId]);
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('createRegion error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.updateRegion = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, geo_id, intro, overview } = req.body;
+    await pool.query(
+      'UPDATE regions SET name = COALESCE(?, name), geo_id = COALESCE(?, geo_id), intro = COALESCE(?, intro), overview = COALESCE(?, overview) WHERE id = ?',
+      [name, geo_id, intro, overview, id]
+    );
+    const [rows] = await pool.query('SELECT * FROM regions WHERE id = ?', [id]);
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('updateRegion error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.deleteRegion = async (req, res) => {
+  try {
+    await pool.query('DELETE FROM regions WHERE id = ?', [req.params.id]);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('deleteRegion error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+// 产业项目管理
+exports.getIndustryItems = async (req, res) => {
+  try {
+    const [list] = await pool.query(
+      'SELECT i.*, r.name as region_name FROM industry_items i LEFT JOIN regions r ON i.region_id = r.id ORDER BY i.region_id, i.id'
+    );
+    res.json({ list });
+  } catch (error) {
+    console.error('getIndustryItems error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.createIndustryItem = async (req, res) => {
+  try {
+    const { region_id, category, name, position, area, capacity, varieties, brand, features, url, status, published_at } = req.body;
+    const [result] = await pool.query(
+      'INSERT INTO industry_items (region_id, category, name, position, area, capacity, varieties, brand, features, url, status, published_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [region_id, category, name, position, area, capacity, varieties, brand, features, url, status || '草稿', published_at]
+    );
+    const [rows] = await pool.query('SELECT i.*, r.name as region_name FROM industry_items i LEFT JOIN regions r ON i.region_id = r.id WHERE i.id = ?', [result.insertId]);
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('createIndustryItem error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.updateIndustryItem = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { region_id, category, name, position, area, capacity, varieties, brand, features, url, status, published_at } = req.body;
+    await pool.query(
+      'UPDATE industry_items SET region_id = COALESCE(?, region_id), category = COALESCE(?, category), name = COALESCE(?, name), position = COALESCE(?, position), area = COALESCE(?, area), capacity = COALESCE(?, capacity), varieties = COALESCE(?, varieties), brand = COALESCE(?, brand), features = COALESCE(?, features), url = COALESCE(?, url), status = COALESCE(?, status), published_at = COALESCE(?, published_at) WHERE id = ?',
+      [region_id, category, name, position, area, capacity, varieties, brand, features, url, status, published_at, id]
+    );
+    const [rows] = await pool.query('SELECT i.*, r.name as region_name FROM industry_items i LEFT JOIN regions r ON i.region_id = r.id WHERE i.id = ?', [id]);
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('updateIndustryItem error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.deleteIndustryItem = async (req, res) => {
+  try {
+    await pool.query('DELETE FROM industry_items WHERE id = ?', [req.params.id]);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('deleteIndustryItem error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};

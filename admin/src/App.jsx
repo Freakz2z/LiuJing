@@ -8,6 +8,7 @@ import Bases from './pages/Bases';
 import Products from './pages/Products';
 import Appointments from './pages/Appointments';
 import Policies from './pages/Policies';
+import Industry from './pages/Industry';
 import MediaLibrary from './pages/MediaLibrary';
 import Login from './pages/Login';
 
@@ -21,7 +22,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/*" element={<PrivateRoute><AdminLayout><Routes><Route path="/" element={<Navigate to="/admin" replace />} /><Route path="/admin" element={<Dashboard />} /><Route path="/admin/banners" element={<Banners />} /><Route path="/admin/contents" element={<Contents />} /><Route path="/admin/users" element={<Users />} /><Route path="/admin/bases" element={<Bases />} /><Route path="/admin/products" element={<Products />} /><Route path="/admin/appointments" element={<Appointments />} /><Route path="/admin/policies" element={<Policies />} /><Route path="/admin/media" element={<MediaLibrary />} /></Routes></AdminLayout></PrivateRoute>} />
+        <Route path="/*" element={<PrivateRoute><AdminLayout><Routes><Route path="/" element={<Navigate to="/admin" replace />} /><Route path="/admin" element={<Dashboard />} /><Route path="/admin/banners" element={<Banners />} /><Route path="/admin/contents" element={<Contents />} /><Route path="/admin/users" element={<Users />} /><Route path="/admin/bases" element={<Bases />} /><Route path="/admin/products" element={<Products />} /><Route path="/admin/appointments" element={<Appointments />} /><Route path="/admin/policies" element={<Policies />} /><Route path="/admin/industry" element={<Industry />} /><Route path="/admin/media" element={<MediaLibrary />} /></Routes></AdminLayout></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );

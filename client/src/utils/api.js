@@ -54,6 +54,12 @@ export const publicApi = {
   getPolicyById: (id) => request(`/public/policies/${id}`),
   getProducts: () => request('/public/products'),
   getBases: () => request('/public/bases'),
+  getRegions: () => request('/public/regions'),
+  getIndustryItems: (params) => {
+    const qs = params ? '?' + new URLSearchParams(params).toString() : '';
+    return request('/public/industry' + qs);
+  },
+  getIndustryByRegion: (regionId) => request(`/public/industry/${regionId}`),
 };
 
 // 管理员接口
