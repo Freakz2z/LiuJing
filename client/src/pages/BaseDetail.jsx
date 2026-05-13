@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { publicApi, getFileUrl } from '../utils/api';
+import { publicApi, userApi, getFileUrl } from '../utils/api';
 import './BaseDetail.css';
 
 const IconArrowLeft = () => (
@@ -63,12 +63,23 @@ export default function BaseDetail() {
 
   const handleAppointment = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem('liujing_token');
+    if (!token) {
+      alert('请先登录');
+      navigate('/login');
+      return;
+    }
     setSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await userApi.createAppointment({
+        type: formData.type,
+        title: base.name,
+        date: formData.date,
+        phone: formData.phone,
+      });
       setSubmitted(true);
     } catch (error) {
-      alert('预约失败，请重试');
+      alert(error.message || '预约失败，请重试');
     } finally {
       setSubmitting(false);
     }
