@@ -1,0 +1,141 @@
+.orders-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+.orders-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.orders-empty {
+  text-align: center;
+  padding: 60px 0;
+  color: #999;
+}
+
+.orders-empty-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.orders-empty p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.orders-back-btn {
+  background: #1a5c1a;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.order-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.order-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.order-no {
+  font-family: monospace;
+  font-size: 13px;
+  color: #666;
+}
+
+.order-status {
+  font-size: 13px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-orange { background: #fff7e6; color: #fa8c16; }
+.status-blue { background: #e6f4ff; color: #1890ff; }
+.status-green { background: #f6ffed; color: #52c41a; }
+.status-default { background: #f5f5f5; color: #999; }
+.status-red { background: #fff1f0; color: #ff4d4f; }
+
+.order-card-body {
+  padding: 12px 16px;
+}
+
+.order-info-row {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 4px;
+}
+
+.order-amount {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e64340;
+  margin-top: 8px;
+}
+
+.order-date {
+  font-size: 12px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.order-card-footer {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid #f0f0f0;
+  justify-content: flex-end;
+}
+
+.order-detail-btn {
+  border: 1px solid #1a5c1a;
+  background: white;
+  color: #1a5c1a;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.order-pay-btn {
+  border: none;
+  background: #1a5c1a;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.order-cancel-btn {
+  border: 1px solid #ddd;
+  background: white;
+  color: #666;
+  padding: 5px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}

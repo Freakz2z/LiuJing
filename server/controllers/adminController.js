@@ -763,3 +763,102 @@ exports.deleteIndustryItem = async (req, res) => {
     res.status(500).json({ message: '服务器错误' });
   }
 };
+
+// ============ 订单管理 ============
+
+exports.getOrders = async (req, res) => {
+  try {
+    const { status } = req.query;
+    let sql = `SELECT o.*, u.username, u.name as user_name, u.phone as user_phone
+               FROM orders o
+               LEFT JOIN users u ON o.user_id = u.id
+               WHERE 1=1`;
+    const params = [];
+    if (status) {
+      sql += ' AND o.status = ?';
+      params.push(status);
+    }
+    sql += ' ORDER BY o.created_at DESC';
+
+    const [list] = await pool.query(sql, params);
+
+    // 统计各状态数量
+    const [[{ total }]] = await pool.query('SELECT COUNT(*) as total FROM orders');
+    const [[{ pending }]] = await pool.query('SELECT COUNT(*) as pending FROM orders WHERE status = ?', ['待支付']);
+    const [[{ paid }]] = await pool.query('SELECT COUNT(*) as paid FROM orders WHERE status = ?', ['已支付']);
+    const [[{ completed }]] = await pool.query('SELECT COUNT(*) as completed FROM orders WHERE status = ?', ['已完成']);
+
+    res.json({
+      list,
+      stats: { total: total || 0, pending: pending || 0, paid: paid || 0, completed: completed || 0 }
+    });
+  } catch (error) {
+    console.error('getOrders error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.getOrderDetail = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [orders] = await pool.query(
+      `SELECT o.*, u.username, u.name as user_name, u.phone as user_phone
+       FROM orders o
+       LEFT JOIN users u ON o.user_id = u.id
+       WHERE o.id = ?`,
+      [id]
+    );
+
+    if (orders.length === 0) {
+      return res.status(404).json({ message: '订单不存在' });
+    }
+
+    const [items] = await pool.query(
+      `SELECT oi.*, p.stock
+       FROM order_items oi
+       LEFT JOIN products p ON oi.product_id = p.id
+       WHERE oi.order_id = ?`,
+      [id]
+    );
+
+    res.json({ order: orders[0], items });
+  } catch (error) {
+    console.error('getOrderDetail error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};
+
+exports.updateOrderStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const validStatuses = ['待支付', '已支付', '已取消', '已退款', '已完成'];
+    if (!validStatuses.includes(status)) {
+      return res.status(400).json({ message: '无效的订单状态' });
+    }
+
+    await pool.query('UPDATE orders SET status = ? WHERE id = ?', [status, id]);
+
+    // 如果是取消或退款，退回库存
+    if (status === '已取消' || status === '已退款') {
+      const [orderItems] = await pool.query('SELECT product_id, quantity FROM order_items WHERE order_id = ?', [id]);
+      for (const item of orderItems) {
+        await pool.query('UPDATE products SET stock = stock + ? WHERE id = ?', [item.quantity, item.product_id]);
+      }
+    }
+
+    const [rows] = await pool.query(
+      `SELECT o.*, u.username, u.name as user_name
+       FROM orders o
+       LEFT JOIN users u ON o.user_id = u.id
+       WHERE o.id = ?`,
+      [id]
+    );
+
+    res.json(rows[0]);
+  } catch (error) {
+    console.error('updateOrderStatus error:', error);
+    res.status(500).json({ message: '服务器错误' });
+  }
+};

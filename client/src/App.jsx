@@ -6,7 +6,9 @@ import Content from './pages/Content';
 import ContentDetail from './pages/ContentDetail';
 import Policy from './pages/Policy';
 import Products from './pages/Products';
+import ProductDetail from './pages/ProductDetail';
 import Bases from './pages/Bases';
+import BaseDetail from './pages/BaseDetail';
 import Login from './pages/Login';
 import About from './pages/About';
 import Charity from './pages/Charity';
@@ -18,9 +20,10 @@ import Terms from './pages/Terms';
 import Privacy from './pages/Privacy';
 import Profile from './pages/Profile';
 import PolicyDetail from './pages/PolicyDetail';
-import ProductDetail from './pages/ProductDetail';
-import BaseDetail from './pages/BaseDetail';
 import Industry from './pages/Industry';
+import Cart from './pages/Cart';
+import Orders from './pages/Orders';
+import OrderDetail from './pages/OrderDetail';
 import './styles/global.css';
 
 function PrivateRoute({ children }) {
@@ -78,6 +81,9 @@ function AppContent() {
             <Route path="/industry" element={<Industry />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/bases/:id" element={<BaseDetail />} />
+            <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
+            <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
+            <Route path="/orders/:id" element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
           </Routes>
         </Layout>
       )}

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { userApi } from '../utils/api';
 import './Header.css';
 
 const navItems = [
@@ -71,6 +72,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [user, setUser] = useState(null);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -80,6 +82,15 @@ export default function Header() {
       try { setUser(JSON.parse(stored)); } catch (e) {}
     }
   }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem('liujing_token');
+    if (token) {
+      userApi?.getCart?.().then(res => {
+        setCartCount(res.count || 0);
+      }).catch(() => {});
+    }
+  }, [user]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -181,6 +192,14 @@ export default function Header() {
                     <line x1="16" y1="17" x2="8" y2="17"/>
                   </svg>
                   我的订单
+                </Link>
+                <Link to="/cart" className="dropdown-item" onClick={() => setUserMenuOpen(false)}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                  </svg>
+                  我的购物车
+                  {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
                 </Link>
                 <div className="dropdown-divider"></div>
                 <button className="dropdown-item dropdown-item-danger" onClick={handleLogout}>

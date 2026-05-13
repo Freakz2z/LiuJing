@@ -34,6 +34,11 @@ router.delete('/products/:id', adminController.deleteProduct);
 router.get('/appointments', adminController.getAppointments);
 router.put('/appointments/:id/status', adminController.updateAppointmentStatus);
 
+// 订单管理
+router.get('/orders', adminController.getOrders);
+router.get('/orders/:id', adminController.getOrderDetail);
+router.put('/orders/:id/status', adminController.updateOrderStatus);
+
 // 政策管理
 router.get('/policies', adminController.getPolicies);
 router.get('/policies/:id', adminController.getPolicyById);

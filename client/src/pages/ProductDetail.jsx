@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { publicApi, getFileUrl } from '../utils/api';
+import { publicApi, userApi, getFileUrl } from '../utils/api';
 import './ProductDetail.css';
 
 const IconArrowLeft = () => (
@@ -55,6 +55,21 @@ export default function ProductDetail() {
       </div>
     );
   }
+
+  const handleAddToCart = async () => {
+    const token = localStorage.getItem('liujing_token');
+    if (!token) {
+      alert('请先登录');
+      navigate('/login');
+      return;
+    }
+    try {
+      await userApi.addToCart(product.id, 1);
+      alert('已加入购物车！');
+    } catch (e) {
+      alert(e.message || '加入购物车失败');
+    }
+  };
 
   if (!product) {
     return (
@@ -130,7 +145,7 @@ export default function ProductDetail() {
               </div>
               
               <div className="pd-actions">
-                <button className="pd-action-btn pd-action-primary">
+                <button className="pd-action-btn pd-action-primary" onClick={handleAddToCart}>
                   <IconCart /> 加入购物车
                 </button>
                 <button className="pd-action-btn" onClick={() => navigate('/products')}>

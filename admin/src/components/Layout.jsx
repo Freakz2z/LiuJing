@@ -11,6 +11,7 @@ import {
   MenuUnfoldOutlined,
   PictureOutlined,
   AppstoreOutlined,
+  ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -24,6 +25,7 @@ const menuItems = [
   { key: '/admin/bases', icon: <EnvironmentOutlined />, label: '基地管理' },
   { key: '/admin/products', icon: <ShoppingOutlined />, label: '商品管理' },
   { key: '/admin/appointments', icon: <CalendarOutlined />, label: '预约管理' },
+  { key: '/admin/orders', icon: <ShoppingCartOutlined />, label: '订单管理' },
   { key: '/admin/policies', icon: <FileTextOutlined />, label: '政策管理' },
   { key: '/admin/industry', icon: <AppstoreOutlined />, label: '产业管理' },
   { key: '/admin/media', icon: <PictureOutlined />, label: '媒体库' },

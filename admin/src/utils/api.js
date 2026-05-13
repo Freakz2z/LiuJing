@@ -152,6 +152,14 @@ export const adminApi = {
   createIndustryItem: (data) => request('/admin/industry', { method: 'POST', body: data }),
   updateIndustryItem: (id, data) => request(`/admin/industry/${id}`, { method: 'PUT', body: data }),
   deleteIndustryItem: (id) => request(`/admin/industry/${id}`, { method: 'DELETE' }),
+
+  // 订单管理
+  getOrders: (status) => {
+    const qs = status ? '?status=' + status : '';
+    return request('/admin/orders' + qs);
+  },
+  getOrderDetail: (id) => request(`/admin/orders/${id}`),
+  updateOrderStatus: (id, status) => request(`/admin/orders/${id}/status`, { method: 'PUT', body: { status } }),
 };
 
 // 获取完整的文件URL

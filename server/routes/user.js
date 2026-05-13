@@ -36,4 +36,18 @@ router.post('/appointments', userController.createAppointment);
 // 提交意见反馈
 router.post('/feedback', userController.submitFeedback);
 
+// ============ 购物车 ============
+router.get('/cart', userController.getCart);
+router.post('/cart', userController.addToCart);
+router.put('/cart', userController.updateCartItem);
+router.delete('/cart/:productId', userController.removeFromCart);
+router.delete('/cart', userController.clearCart);
+
+// ============ 订单 ============
+router.get('/orders', userController.getOrders);
+router.get('/orders/:id', userController.getOrderDetail);
+router.post('/orders', userController.createOrder);
+router.put('/orders/:id/pay', userController.payOrder);
+router.put('/orders/:id/cancel', userController.cancelOrder);
+
 module.exports = router;

@@ -110,4 +110,18 @@ export const userApi = {
   getAppointments: () => request('/user/appointments'),
   createAppointment: (data) => request('/user/appointments', { method: 'POST', body: JSON.stringify(data) }),
   submitFeedback: (data) => request('/user/feedback', { method: 'POST', body: JSON.stringify(data) }),
+
+  // 购物车
+  getCart: () => request('/user/cart'),
+  addToCart: (productId, quantity = 1) => request('/user/cart', { method: 'POST', body: JSON.stringify({ productId, quantity }) }),
+  updateCartItem: (productId, quantity) => request('/user/cart', { method: 'PUT', body: JSON.stringify({ productId, quantity }) }),
+  removeFromCart: (productId) => request(`/user/cart/${productId}`, { method: 'DELETE' }),
+  clearCart: () => request('/user/cart', { method: 'DELETE' }),
+
+  // 订单
+  getOrders: () => request('/user/orders'),
+  getOrderDetail: (id) => request(`/user/orders/${id}`),
+  createOrder: (data) => request('/user/orders', { method: 'POST', body: JSON.stringify(data) }),
+  payOrder: (id) => request(`/user/orders/${id}/pay`, { method: 'PUT' }),
+  cancelOrder: (id) => request(`/user/orders/${id}/cancel`, { method: 'PUT' }),
 };
