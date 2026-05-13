@@ -24,6 +24,7 @@ import Industry from './pages/Industry';
 import Cart from './pages/Cart';
 import Orders from './pages/Orders';
 import OrderDetail from './pages/OrderDetail';
+import MyAppointments from './pages/MyAppointments';
 import './styles/global.css';
 
 function PrivateRoute({ children }) {
@@ -84,6 +85,7 @@ function AppContent() {
             <Route path="/cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
             <Route path="/orders" element={<PrivateRoute><Orders /></PrivateRoute>} />
             <Route path="/orders/:id" element={<PrivateRoute><OrderDetail /></PrivateRoute>} />
+            <Route path="/my-appointments" element={<PrivateRoute><MyAppointments /></PrivateRoute>} />
           </Routes>
         </Layout>
       )}
