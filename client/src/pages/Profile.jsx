@@ -14,13 +14,6 @@ const IconHeart = () => (
     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
   </svg>
 );
-const IconCalendar = () => (
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-    <line x1="3" y1="10" x2="21" y2="10"/>
-  </svg>
-);
 const IconEdit = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
@@ -34,7 +27,6 @@ const IconPlay = () => (
 export default function Profile() {
   const [user, setUser] = useState(null);
   const [favorites, setFavorites] = useState([]);
-  const [appointments, setAppointments] = useState([]);
   const [activeTab, setActiveTab] = useState('favorites');
   const [editing, setEditing] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '' });
@@ -48,17 +40,15 @@ export default function Profile() {
   const loadData = async () => {
     setLoading(true);
     try {
-      const [profileRes, favRes, aptRes] = await Promise.all([
+      const [profileRes, favRes] = await Promise.all([
         userApi.getProfile().catch(() => null),
         userApi.getFavorites().catch(() => ({ list: [] })),
-        userApi.getAppointments().catch(() => ({ list: [] })),
       ]);
       if (profileRes) {
         setUser(profileRes);
         setForm({ name: profileRes.name || '', phone: profileRes.phone || '' });
       }
       setFavorites(favRes.list || []);
-      setAppointments(aptRes.list || []);
     } catch (e) {
       console.error('Failed to load profile data:', e);
     } finally {
@@ -120,13 +110,6 @@ export default function Profile() {
   const handleCancel = () => {
     setForm({ name: user?.name || '', phone: user?.phone || '' });
     setEditing(false);
-  };
-
-  const statusMap = {
-    '待确认': { class: 'pending', label: '待确认' },
-    '已确认': { class: 'confirmed', label: '已确认' },
-    '已完成': { class: 'completed', label: '已完成' },
-    '已取消': { class: 'cancelled', label: '已取消' },
   };
 
   if (loading) {
@@ -198,12 +181,6 @@ export default function Profile() {
               >
                 <IconHeart />我的收藏 ({favorites.length})
               </button>
-              <button
-                className={`profile-tab ${activeTab === 'appointments' ? 'active' : ''}`}
-                onClick={() => setActiveTab('appointments')}
-              >
-                <IconCalendar />我的预约 ({appointments.length})
-              </button>
             </div>
 
             {/* 收藏列表 */}
@@ -236,35 +213,6 @@ export default function Profile() {
               </div>
             )}
 
-            {/* 预约列表 */}
-            {activeTab === 'appointments' && (
-              <div className="appointments-list">
-                {appointments.length === 0 ? (
-                  <div className="empty-state">
-                    <p>暂无预约记录</p>
-                  </div>
-                ) : (
-                  <div className="appointments-grid">
-                    {appointments.map((item) => {
-                      const status = statusMap[item.status] || statusMap['待确认'];
-                      return (
-                        <div key={item.id} className="appointment-card">
-                          <div className="appointment-header">
-                            <span className={`status-badge ${status.class}`}>{status.label}</span>
-                            <span className="appointment-type">{item.type}</span>
-                          </div>
-                          <h4>{item.title}</h4>
-                          <div className="appointment-meta">
-                            <span>{item.date}</span>
-                            {item.phone && <span>{item.phone}</span>}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </div>

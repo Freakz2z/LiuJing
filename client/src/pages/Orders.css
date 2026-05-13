@@ -10,6 +10,41 @@
   color: #333;
 }
 
+.orders-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.orders-tab {
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+
+.orders-tab.active {
+  color: #1a5c1a;
+  border-bottom-color: #1a5c1a;
+  font-weight: bold;
+}
+
+.orders-tab:hover:not(.active) {
+  color: #333;
+}
+
+.orders-loading {
+  text-align: center;
+  padding: 40px;
+  color: #999;
+}
+
 .orders-empty {
   text-align: center;
   padding: 60px 0;
