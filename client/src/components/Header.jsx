@@ -5,10 +5,10 @@ import './Header.css';
 const navItems = [
   { path: '/', label: '首页' },
   { path: '/content', label: '内容' },
-  { path: '/industry', label: '产业' },
   { path: '/policy', label: '政策' },
   { path: '/products', label: '商品' },
   { path: '/bases', label: '基地' },
+  { path: '/industry', label: '产业' },
 ];
 
 const IconHome = () => (

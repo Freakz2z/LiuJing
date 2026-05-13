@@ -36,7 +36,12 @@ async function request(path, options = {}) {
   }
 
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status}`);
+    let errMsg = `HTTP ${res.status}`;
+    try {
+      const errData = await res.json();
+      if (errData && errData.message) errMsg = errData.message;
+    } catch (_) {}
+    throw new Error(errMsg);
   }
 
   return res.json();

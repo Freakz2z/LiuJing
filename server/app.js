@@ -17,6 +17,25 @@ app.use(cors({
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
+// 海南GeoJSON代理（解决跨域问题）
+app.get('/api/geo/hainan', async (_req, res) => {
+  try {
+    const https = require('https');
+    const url = 'https://geo.datav.aliyun.com/areas_v3/bound/460000_full.json';
+    https.get(url, (geoRes) => {
+      let data = '';
+      geoRes.on('data', chunk => data += chunk);
+      geoRes.on('end', () => {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Content-Type', 'application/json');
+        res.send(data);
+      });
+    }).on('error', () => res.status(500).send('Failed to fetch GeoJSON'));
+  } catch {
+    res.status(500).send('Proxy error');
+  }
+});
+
 // 确保所有响应使用UTF-8编码
 app.use((_req, res, next) => {
   res.charset = 'utf-8';
