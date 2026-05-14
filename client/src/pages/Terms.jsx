@@ -111,7 +111,7 @@ export default function Terms() {
           <div className="legal-footer">
             <p>如有疑问，请联系我们：</p>
             <p>客服热线：请通过在线留言联系客服</p>
-            <p>邮箱：contact@example.invalid</p>
+            <p>邮箱：请通过在线留言联系</p>
           </div>
         </div>
       </div>

@@ -3,22 +3,17 @@ import './About.css';
 
 const contactInfo = [
   {
-    icon: '📍',
+    icon: '--',
     title: '地址',
-    content: '海南省（详见部署配置）',
+    content: '海南省三亚市',
   },
   {
-    icon: '📞',
+    icon: '--',
     title: '电话',
-    content: '请通过在线留言联系客服',
+    content: '请通过在线留言与我们联系',
   },
   {
-    icon: '✉️',
-    title: '邮箱',
-    content: 'contact@example.invalid',
-  },
-  {
-    icon: '⏰',
+    icon: '--',
     title: '工作时间',
     content: '周一至周五 9:00-18:00（节假日除外）',
   },
@@ -70,8 +65,8 @@ export default function Contact() {
 
             <div className="contact-map">
               <div className="map-placeholder">
-                <span>📍</span>
-                <p>海南省海口市</p>
+                <span>--</span>
+                <p>海南省</p>
               </div>
             </div>
           </div>
