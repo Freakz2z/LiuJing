@@ -2,9 +2,18 @@ const express = require('express');
 const router = express.Router();
 const adminController = require('../controllers/adminController');
 const { verifyToken, verifyAdmin } = require('../middleware/auth');
+const { clearPublicCache } = require('../utils/redis');
 
 // 所有管理员接口都需要登录和权限验证
 router.use(verifyToken, verifyAdmin);
+
+// 管理员写操作后清空公开缓存
+router.use((req, res, next) => {
+  if (['POST', 'PUT', 'DELETE'].includes(req.method)) {
+    res.on('finish', () => { if (res.statusCode < 400) clearPublicCache(); });
+  }
+  next();
+});
 
 // 统计概览
 router.get('/stats', adminController.getStats);

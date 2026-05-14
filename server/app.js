@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const { get, set } = require('./utils/redis');
 
 dotenv.config();
 
@@ -16,6 +17,22 @@ app.use(cors({
 }));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Redis缓存中间件（用于公开数据接口）
+const cacheMiddleware = (ttl = 300) => async (req, res, next) => {
+  if (req.method !== 'GET') return next();
+  const key = `liujing:${req.originalUrl}`;
+  try {
+    const cached = await get(key);
+    if (cached) { res.json(cached); return; }
+    const originalJson = res.json.bind(res);
+    res.json = (body) => {
+      if (res.statusCode === 200) set(key, body, ttl).catch(() => {});
+      return originalJson(body);
+    };
+  } catch {}
+  next();
+};
 
 // 海南GeoJSON代理（解决跨域问题）
 app.get('/api/geo/hainan', async (_req, res) => {
@@ -57,7 +74,7 @@ const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 const uploadRoutes = require('./routes/upload');
 
-app.use('/api/public', publicRoutes);
+app.use('/api/public', cacheMiddleware(300), publicRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/upload', uploadRoutes);
