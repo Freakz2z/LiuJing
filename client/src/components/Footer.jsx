@@ -24,8 +24,8 @@ export default function Footer() {
               </div>
             </div>
             <p className="footer-slogan">
-              聚焦海南自贸港榴莲产业<br />
-              助力乡村产业振兴
+              聚焦海南自贸港榴莲全产业链数字化赋能<br />
+              打造"内容—品牌—平台—文旅"服务体系
             </p>
             
             <div className="footer-contact-list">
@@ -41,7 +41,7 @@ export default function Footer() {
             <div className="footer-nav-section">
               <h4 className="footer-nav-title">关于我们</h4>
               <p className="footer-company-intro">
-                专注于海南自贸港榴莲产业，聚焦种植、加工、销售全产业链，致力于推动热带水果产业品牌化、溯源化、国际化发展。
+                聚焦海南自贸港榴莲全产业链数字化赋能，打造"内容—品牌—平台—文旅"服务体系，破解本土榴莲品牌薄弱痛点，推动热带水果产业品牌化、溯源化、国际化发展，兼顾商业与社会价值，助力乡村振兴。
               </p>
             </div>
 
