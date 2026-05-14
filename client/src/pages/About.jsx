@@ -41,7 +41,7 @@ export default function About() {
         <div className="page-header">
           <span className="section-label">关于我们</span>
           <h1 className="page-title">榴镜自贸·乡链视界</h1>
-          <p className="page-subtitle">聚焦海南自贸港榴莲产业，用镜头记录乡村故事</p>
+          <p className="page-subtitle">聚焦海南自贸港榴莲全产业链数字化赋能，打造"内容—品牌—平台—文旅"服务体系</p>
         </div>
 
         {/* 项目介绍 */}
@@ -49,10 +49,7 @@ export default function About() {
           <h2 className="section-title">项目介绍</h2>
           <div className="about-content">
             <p>
-              "榴镜自贸·乡链视界"是专注于海南自贸港榴莲产业的内容平台，致力于通过纪录片、短剧等视频内容，展现榴莲产业链从种植、加工到销售的完整过程，讲述农户增收致富的故事。
-            </p>
-            <p>
-              我们相信，每一颗榴莲背后都有一个乡村家庭的梦想。通过内容赋能，我们希望帮助海南榴莲产业提升品牌价值，让优质榴莲走出海南、走向全国乃至世界，同时带动更多农户增收致富，助推乡村产业振兴。
+              破解本土榴莲品牌薄弱痛点，推动热带水果产业品牌化、溯源化、国际化发展，兼顾商业与社会价值，助力乡村振兴。
             </p>
           </div>
         </section>
