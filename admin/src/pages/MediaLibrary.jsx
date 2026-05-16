@@ -93,7 +93,13 @@ export default function MediaLibrary({ visible = false, onSelect, selectMode = f
     try {
       await adminApi.deleteMedia({ id: item.id });
       message.success('删除成功');
-      fetchData(page);
+      // 删除后检查当前页是否有数据，如果没有则回第一页
+      const type = activeTab === 'images' ? 'image' : 'video';
+      adminApi.getMedia({ type, page: 1, pageSize: PAGE_SIZE }).then(res => {
+        const newTotal = res.total || 0;
+        const newPage = newTotal > 0 && page > 1 ? page : 1;
+        fetchData(newPage);
+      }).catch(() => fetchData(1));
     } catch (e) { message.error('删除失败: ' + e.message); }
   };
 
