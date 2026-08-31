@@ -122,7 +122,7 @@ export default function Feedback() {
                 <span className="channel-icon">✉️</span>
                 <div>
                   <h4>邮箱地址</h4>
-                  <p>feedback@example.invalid</p>
+                  <p>请通过在线留言联系客服</p>
                 </div>
               </div>
               <div className="channel-item">

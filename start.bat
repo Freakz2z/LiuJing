@@ -48,8 +48,8 @@ echo 用户端:   http://localhost:5173
 echo 管理后台: http://localhost:5174
 echo 后端API:  http://localhost:3000
 echo.
-echo 管理员账号: admin
-echo 管理员密码: CHANGE_ME
+echo 管理员账号: 请使用数据库中自行设置的账号
+echo 管理员密码: 不会在启动脚本中提供默认值
 echo.
 echo 关闭此窗口不会停止服务
 echo 如需停止，请运行 stop.bat 或手动结束进程

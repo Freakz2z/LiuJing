@@ -1,6 +1,10 @@
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'replace-with-env-secret';
+const JWT_SECRET = process.env.JWT_SECRET;
+
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET is required. Copy server/.env.example to server/.env and set it before starting the server.');
+}
 
 // 验证JWT token
 const verifyToken = (req, res, next) => {

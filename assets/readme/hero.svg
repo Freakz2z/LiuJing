@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1200" height="440" viewBox="0 0 1200 440"
+     role="img" aria-labelledby="title desc">
+  <title id="title">榴镜：海南榴莲产业数字化平台</title>
+  <desc id="desc">榴镜由 React 用户端、React 与 Ant Design 管理后台和 Express API 组成，连接内容、政策、基地、商品与产业数据。</desc>
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2418"/>
+      <stop offset="1" stop-color="#163d28"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#214d31"/>
+      <stop offset="1" stop-color="#173923"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffe88b"/>
+      <stop offset="1" stop-color="#ffb638"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="440" rx="28" fill="url(#bg)"/>
+  <path d="M0 362 C170 305 276 420 432 362 S696 302 856 354 S1083 407 1200 342 V440 H0 Z"
+        fill="#0a1d14" opacity=".56"/>
+  <path d="M0 385 C170 331 284 430 446 378 S698 328 854 371 S1080 424 1200 360"
+        fill="none" stroke="#2e8a60" stroke-width="2" opacity=".65"/>
+  <circle cx="1118" cy="58" r="70" fill="#4caf50" opacity=".08"/>
+  <circle cx="1118" cy="58" r="44" fill="none" stroke="#9bd36b" stroke-width="1" opacity=".45"/>
+  <circle cx="1118" cy="58" r="5" fill="#ffb638"/>
+
+  <g id="title-block" transform="translate(64 54)">
+    <text x="0" y="0" fill="#b6d9bd" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" letter-spacing="3">LIUJING / OPEN PLATFORM</text>
+    <text x="0" y="86" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="76" font-weight="800" letter-spacing="2">榴镜</text>
+    <text x="0" y="134" fill="#ffcf63" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="30" font-weight="700">海南榴莲产业数字化平台</text>
+    <text x="0" y="188" fill="#e1f0e4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="23">让内容、政策、产业地图、基地与文创服务</text>
+    <text x="0" y="224" fill="#e1f0e4" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="23">沿着同一条数据链路协作。</text>
+
+    <g transform="translate(0 278)">
+      <rect width="124" height="42" rx="21" fill="#2a6542" stroke="#73b979" stroke-width="1"/>
+      <text x="62" y="27" text-anchor="middle" fill="#f3fff1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">React 19</text>
+      <rect x="138" width="124" height="42" rx="21" fill="#2a6542" stroke="#73b979" stroke-width="1"/>
+      <text x="200" y="27" text-anchor="middle" fill="#f3fff1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">Express 5</text>
+      <rect x="276" width="116" height="42" rx="21" fill="#2a6542" stroke="#73b979" stroke-width="1"/>
+      <text x="334" y="27" text-anchor="middle" fill="#f3fff1" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">MySQL</text>
+      <rect x="406" width="112" height="42" rx="21" fill="#8a4d16" stroke="#ffb638" stroke-width="1"/>
+      <text x="462" y="27" text-anchor="middle" fill="#fff5d6" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">Redis</text>
+    </g>
+  </g>
+
+  <g id="project-surface" transform="translate(676 50)">
+    <text x="0" y="0" fill="#b6d9bd" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="2">PROJECT SURFACE</text>
+
+    <path d="M94 80 L224 154 M382 80 L252 154 M252 244 L252 290 M78 334 L150 334 M174 334 L238 334 M266 334 L330 334 M358 334 L422 334 M450 334 L514 334"
+          fill="none" stroke="#79bd83" stroke-width="2" opacity=".78"/>
+    <circle cx="224" cy="154" r="5" fill="#ffb638"/>
+    <circle cx="252" cy="244" r="5" fill="#5fc3f1"/>
+
+    <g transform="translate(0 32)">
+      <rect width="178" height="70" rx="16" fill="url(#panel)" stroke="#73b979" stroke-width="1"/>
+      <circle cx="26" cy="26" r="10" fill="#9bd36b" opacity=".9"/>
+      <text x="48" y="31" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="22" font-weight="700">用户端</text>
+      <text x="24" y="55" fill="#b6d9bd" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">React · Vite</text>
+    </g>
+
+    <g transform="translate(326 32)">
+      <rect width="178" height="70" rx="16" fill="url(#panel)" stroke="#73b979" stroke-width="1"/>
+      <circle cx="26" cy="26" r="10" fill="#ffb638" opacity=".95"/>
+      <text x="48" y="31" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="22" font-weight="700">管理后台</text>
+      <text x="24" y="55" fill="#b6d9bd" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18">React · Ant Design</text>
+    </g>
+
+    <g transform="translate(132 136)">
+      <rect width="240" height="112" rx="20" fill="#f6fff1"/>
+      <rect x="18" y="18" width="36" height="36" rx="10" fill="#1b5e20"/>
+      <path d="M30 36 h12 M36 30 v12" stroke="#d8f09a" stroke-width="3" stroke-linecap="round"/>
+      <text x="70" y="46" fill="#163923" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="25" font-weight="800">榴镜 API</text>
+      <text x="20" y="80" fill="#3e6648" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">Express · JWT · REST</text>
+      <text x="20" y="101" fill="#3e6648" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19">MySQL + cache</text>
+    </g>
+
+    <g transform="translate(0 300)">
+      <g>
+        <rect width="78" height="58" rx="15" fill="#214d31" stroke="#4caf50" stroke-width="1"/>
+        <text x="39" y="36" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="21" font-weight="700">内容</text>
+      </g>
+      <g transform="translate(98)">
+        <rect width="78" height="58" rx="15" fill="#214d31" stroke="#4caf50" stroke-width="1"/>
+        <text x="39" y="36" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="21" font-weight="700">政策</text>
+      </g>
+      <g transform="translate(196)">
+        <rect width="78" height="58" rx="15" fill="#214d31" stroke="#4caf50" stroke-width="1"/>
+        <text x="39" y="36" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="21" font-weight="700">基地</text>
+      </g>
+      <g transform="translate(294)">
+        <rect width="78" height="58" rx="15" fill="#8a4d16" stroke="#ffb638" stroke-width="1"/>
+        <text x="39" y="36" text-anchor="middle" fill="#fff5d6" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="21" font-weight="700">商品</text>
+      </g>
+      <g transform="translate(392)">
+        <rect width="78" height="58" rx="15" fill="#214d31" stroke="#4caf50" stroke-width="1"/>
+        <text x="39" y="36" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif" font-size="21" font-weight="700">产业</text>
+      </g>
+    </g>
+  </g>
+</svg>

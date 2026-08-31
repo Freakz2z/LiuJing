@@ -149,7 +149,7 @@ CREATE TABLE IF NOT EXISTS charity_progress (
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- 插入默认管理员账号 (密码: CHANGE_ME)
+-- 插入管理员占位账号；首次部署前请将 password 替换为真实 bcrypt hash
 INSERT INTO users (username, password, name, role) VALUES
 ('admin', '$2a$10$XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', '管理员', 'admin');
 
